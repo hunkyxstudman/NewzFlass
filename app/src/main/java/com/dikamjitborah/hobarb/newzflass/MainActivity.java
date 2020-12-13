@@ -11,12 +11,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.dikamjitborah.hobarb.newzflass.Adapter.NewsAdapter_main;
 import com.dikamjitborah.hobarb.newzflass.ApiHandling.NewsApi;
+import com.dikamjitborah.hobarb.newzflass.ApiHandling.NewsApi_calls;
 import com.dikamjitborah.hobarb.newzflass.Model.NewsSchema;
 
 import java.util.ArrayList;
@@ -28,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     NewsAdapter_main newsAdapter_main;
     ListView listView;
 
+    ProgressBar progressBar;
+     ArrayList<NewsSchema> news;
+     NewsAdapter_main newsAdapter;
 
 
 
@@ -43,35 +50,14 @@ public class MainActivity extends AppCompatActivity {
        // toolbar.setTitleTextAppearance(this, R.style.armata);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        progressBar = findViewById(R.id.pb_main);
 
         listView = findViewById(R.id.lv_main);
+        NewsApi_calls newsApi_calls = new NewsApi_calls(this,news, newsAdapter, listView);
+        newsApi_calls.getSpaceData(5);
 
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://spaceflightnewsapi.net/api/v2/").addConverterFactory(GsonConverterFactory.create()).build();
-        NewsApi newsApi = retrofit.create(NewsApi.class);
-        Call<List<NewsSchema>> call = newsApi.getArticles(10);
-        call.enqueue(new Callback<List<NewsSchema>>() {
-            @Override
-            public void onResponse(Call<List<NewsSchema>> call, Response<List<NewsSchema>> response) {
 
-                if(!response.isSuccessful())
-                {
-                    Toast.makeText(MainActivity.this, "" + response.code(), Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    ArrayList<NewsSchema> news = (ArrayList<NewsSchema>) response.body();
-                    newsAdapter_main = new NewsAdapter_main(getApplicationContext(), news);
-                    listView.setAdapter(newsAdapter_main);
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<NewsSchema>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
