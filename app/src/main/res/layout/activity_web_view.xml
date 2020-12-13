@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="MainActivity"
+    tools:context=".WebViewActivity"
     android:orientation="vertical"
     android:background="#ffcc80">
 
@@ -14,7 +14,7 @@
         android:elevation="8dp"
         app:title="@string/app_name"
         app:titleTextColor="@color/whitefa"
-        android:id="@+id/tb_main"
+        android:id="@+id/tb_wv"
         >
 
     </androidx.appcompat.widget.Toolbar>
@@ -26,33 +26,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-          <!--  <include
-                layout="@layout/custom_toolbar"
+
+            <WebView
+                android:id="@+id/webView_wv"
                 android:layout_width="match_parent"
-                android:layout_height="36dp" />
--->
-
-
-            <ListView
-
-                android:id="@+id/lv_main"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/child_padding">
-
-            </ListView>
-            <!-- <androidx.recyclerview.widget.RecyclerView
-                 android:id="@+id/rv_main"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent">
-
-             </androidx.recyclerview.widget.RecyclerView>-->
+                android:layout_height="match_parent" />
         </LinearLayout>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_refresh_24"

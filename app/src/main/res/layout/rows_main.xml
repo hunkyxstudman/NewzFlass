@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_rows"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/parent_margin"
+    android:layout_marginBottom="10dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="8dp"
+       >
+        <LinearLayout
+            android:layout_margin="@dimen/parent_margin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/img_rm"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/takeoff">
+
+            </ImageView>
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/font"
+                    android:padding="@dimen/child_padding"
+                    android:id="@+id/date_rm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:textStyle="italic">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/title_rm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/caudex"
+                    android:maxLines="2"
+                    android:padding="@dimen/child_padding"
+                    android:text="Title"
+                    android:textColor="#283593">
+
+                </TextView>
+                <TextView
+                    style="@style/font"
+                    android:padding="@dimen/child_padding"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:id="@+id/summary_rm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Summary">
+
+                </TextView>
+                <TextView
+                    style="@style/font"
+                    android:layout_margin="2dp"
+                    android:padding="8dp"
+                    android:id="@+id/site_rm"
+                    android:background="@drawable/tag_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Newssite">
+
+                </TextView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
