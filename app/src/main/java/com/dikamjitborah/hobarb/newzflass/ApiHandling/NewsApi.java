@@ -11,4 +11,6 @@ import retrofit2.http.Query;
 public interface NewsApi {
     @GET("articles")
     Call<List<NewsSchema>> getArticles(@Query("_limit") int _limit);
+    @GET("articles")
+    Call<List<NewsSchema>> getArticles(@Query("_limit") int _limit, @Query("_start") int skip);
 }
